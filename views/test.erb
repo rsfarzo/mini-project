@@ -1,0 +1,8 @@
+<%
+  if ENV.has_key? "NASA"
+    nasa_api_key = ENV.fetch("NASA")
+%>
+ok
+<% else %>
+no key
+<% end %>
