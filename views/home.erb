@@ -1,12 +1,19 @@
 
+<%  
+  if ENV.has_key? "NASA"
+    toast_status="🟢Ready"
+  else
+    toast_status="🔴Not ready" 
+  end
+%>
 
 
-<div class="toast show">
+<div class="toast show" >
   <div class="toast-header">
-    Toast Header
+    Status
     <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
   </div>
   <div class="toast-body">
-    Some text inside the toast body
+    <%= toast_status %>
   </div>
 </div>
