@@ -10,6 +10,9 @@ BetterErrors::Middleware.allow_ip!('0.0.0.0/0.0.0.0')
 get("/") do
   erb(:home)
 end
-get("/test") do
-  erb(:test)
+get("/rover") do
+  erb(:rover)
+end
+get("/near_earth") do
+  erb(:near_earth)
 end
