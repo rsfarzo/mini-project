@@ -1,3 +1,6 @@
+<script src="https://www.google.com/jsapi"></script>
+<script src="chartkick.js"></script>
+
 <%
   if ENV.has_key? "NASA"
     nasa_api_key = ENV.fetch("NASA")
@@ -6,6 +9,7 @@
     
     require "http"
     raw_response = HTTP.get(url_near_earth)
+    data = Hash.new
 
     require "json"
     parsed_response = JSON.parse(raw_response)
@@ -17,23 +21,26 @@
       <b><%= daily.first %> Asteriods</b><br/>
       <% 
         daily[1].each { |object|
+          name = object["name"]
       %>
         <% if object["is_potentially_hazardous_asteroid"] %>
-          <%= object["name"]+"❗" %>
+          <%= name + "❗" %>
         <% else %>
-          <%= object["name"] %>
+          <%= name %>
         <% end 
           diameter = (object["estimated_diameter"]["meters"]["estimated_diameter_min"] + object["estimated_diameter"]["meters"]["estimated_diameter_max"]) / 2
           miss_distance = object["close_approach_data"].first["miss_distance"]["miles"]
+          data[miss_distance] = diameter
         %>
         <%= diameter %> meters diameter
         <%= miss_distance %> miles from Earth
         <hr/>
       <%
         }
+        plot_data = data.sort
       } %>
       <hr/>
-
+<%= line_chart data %>
 <% else %>
 no key
 <% end %>
