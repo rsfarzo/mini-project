@@ -2,9 +2,6 @@
   if ENV.has_key? "NASA"
     nasa_api_key = ENV.fetch("NASA")
 
-
-    #url_rover = "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=2023-7-22&page=1&sol=1&camera=MAST&api_key=#{nasa_api_key}"
-
     url_near_earth = "https://api.nasa.gov/neo/rest/v1/feed?start_date=2015-09-07&end_date=2015-09-08&api_key=#{nasa_api_key}"
     
     require "http"
@@ -12,14 +9,31 @@
 
     require "json"
     parsed_response = JSON.parse(raw_response)
+    number_of_objects = parsed_response["element_count"]
+    near_earth_objects =  parsed_response["near_earth_objects"]
+   
+    near_earth_objects.each { |daily|
+  %>
+      <b><%= daily.first %> Asteriods</b><br/>
+      <% 
+        daily[1].each { |object|
+      %>
+        <% if object["is_potentially_hazardous_asteroid"] %>
+          <%= object["name"]+"❗" %>
+        <% else %>
+          <%= object["name"] %>
+        <% end 
+          diameter = (object["estimated_diameter"]["meters"]["estimated_diameter_min"] + object["estimated_diameter"]["meters"]["estimated_diameter_max"]) / 2
+          miss_distance = object["close_approach_data"].first["miss_distance"]["miles"]
+        %>
+        <%= diameter %> meters diameter
+        <%= miss_distance %> miles from Earth
+        <hr/>
+      <%
+        }
+      } %>
+      <hr/>
 
-    #photo = parsed_response["photos"].shuffle
-    #photo_url = parsed_response["photos"].first["img_src"]
-    #p parsed_response["photos"].sample
-    #p photo_url
-
-%>
-  <img src=<%=photo_url%>>
 <% else %>
 no key
 <% end %>
