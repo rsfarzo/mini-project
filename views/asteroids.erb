@@ -1,0 +1,10 @@
+<script src="https://www.google.com/jsapi"></script>
+<script src="chartkick.js"></script>
+<h1>Asteroids Near Earth</h1>
+<div>
+  This is a chart of asteroids near Earth. The x-axis is the distance in miles from earth. The y-axis is the approximate diameter in meters. 1 m is nearly 3.3 ft
+</div>
+<div>
+  🚧 This app is under construction. The charting gem <a href="https://github.com/rogerwelin/sinatra-chartkick-example" target="_blank">chartkick</a> plots a list of x-y coordinates in order. The plot looks odd because the entire list needs to be sorted by the x-axis values.🚧
+</div>
+<%= line_chart @plot_data %>

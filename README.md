@@ -45,3 +45,6 @@ require 'chartkick'
 <script src="https://www.google.com/jsapi"></script>
 <script src="chartkick.js"></script>
 ```
+## service object: nasa.rb
+- create a folder named `services`
+- create an rb file, for this app I chose `nasa.rb`
