@@ -1,4 +1,9 @@
-A Sinatra app that used NASA API.  Features: Mars rover
+# NASApp
+
+A Sinatra app that used NASA API.  Features: 
+- Mars rover mast photo
+- Asteroids near Earth
+
 ## chartkick
 
 ref. https://github.com/rogerwelin/sinatra-chartkick-example/tree/master
