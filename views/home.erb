@@ -1,9 +1,12 @@
+<p>
+  <a href="https://github.com/rsfarzo/mini-project" target="_blank">github repo</a>
+</p>
 
 <%  
   if ENV.has_key? "NASA"
-    toast_status = "🟢Ready"
+    toast_status = "🟢 Ready. Choose Mars Rover or Asteroids"
   else
-    toast_status = "🔴Not ready" 
+    toast_status = "🔴 Not ready" 
   end
 %>
 
@@ -13,6 +16,3 @@
     <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
   </div>
 </div>
-<p>
-  <a href="https://github.com/rsfarzo/mini-project" target="_blank">github repo</a>
-</p>
