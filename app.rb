@@ -1,7 +1,7 @@
 require "sinatra"
 require "sinatra/reloader"
 #require "better_errors"
-require "binding_of_caller"
+#require "binding_of_caller"
 require "chartkick"
 require "./services/nasa"
 # Need this configuration for better_errors
