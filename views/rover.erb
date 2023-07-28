@@ -16,9 +16,6 @@
 
     photo = parsed_response["photos"].shuffle
     photo_url = parsed_response["photos"].first["img_src"]
-    #p parsed_response["photos"].sample
-    p photo_url
-
 %>
   <img src=<%=photo_url%>>
 <% else %>
