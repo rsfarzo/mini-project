@@ -26,17 +26,12 @@ class NASA
         }
         data = data.sort_by{|k|k[0]}
         @plot_data = data
-        pp @plot_data
-        #@plot_data = data
-
       }
     else 
       @plot_data = {'2015-07-20 00:00:00 UTC' => 2, '2015-07-21 00:00:00 UTC' => 4, '2015-07-22 00:00:00 UTC' => 1, '2015-07-23 00:00:00 UTC' => 7}
     end
     if ENV['RACK_ENV'] == 'development'
-      #p data
- 
-      #}
+      pp @plot_data
     end
     @plot_data
   end
