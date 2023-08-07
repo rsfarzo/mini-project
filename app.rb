@@ -4,6 +4,7 @@ require "sinatra/reloader"
 #require "binding_of_caller"
 require "chartkick"
 require "./services/nasa"
+require "date"
 # Need this configuration for better_errors
 #use(BetterErrors::Middleware)
 #BetterErrors.application_root = __dir__

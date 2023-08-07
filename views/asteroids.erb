@@ -1,12 +1,23 @@
 <script src="https://www.google.com/jsapi"></script>
 <script src="chartkick.js"></script>
+
 <h1>Asteroids Near Earth</h1>
-<div>
-  This is a chart of asteroids near Earth. The x-axis is the distance in miles from earth. The y-axis is the approximate diameter in meters. 1 m is nearly 3.3 ft
-</div>
-<div>
-  🚧 This app is under construction. Currently working on labels.🚧
-</div>
 
-<%= line_chart @plot_data , library: {title: "⬆️Size(m),➡️Distance(miles)",backgroundColor: "#eee",xtitle: "Nearness", ytitle: "Diameter"}, opts: {xtitle: "x title" } %>
-
+<table class="chart-container">
+  <tr><th></th><th><%= Date.today.strftime('%b %d, %Y') %></th>
+  <tr>
+    <td class="chart-y-axis-label">
+      Diameter<br>(meters)
+    </td>
+    <td class="chart-item">
+      <%= column_chart @plot_data , library: {backgroundColor: "#eee"} %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+    </td>
+    <td  class="chart-x-axis-label">
+      Distance from Earth<br>(1/100,000th miles)
+    </td>
+  </tr>  
+</table>
