@@ -1,23 +1,40 @@
-<h1>MARS Rover</h1>
-<div>
-  Photo from the mast camera on one particular day.
-</div>
+<h1>Latest photos</h1>
 <%
   if ENV.has_key? "NASA"
     nasa_api_key = ENV.fetch("NASA")
 
-    url_rover = "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=2023-7-22&page=1&sol=1&camera=MAST&api_key=#{nasa_api_key}"
-    
+    url_rover = "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/latest_photos?api_key=#{nasa_api_key}"
+  
     require "http"
     raw_response = HTTP.get(url_rover)
 
     require "json"
     parsed_response = JSON.parse(raw_response)
 
-    photo = parsed_response["photos"].shuffle
-    photo_url = parsed_response["photos"].first["img_src"]
+    latest_photos = parsed_response["latest_photos"]
 %>
-  <img src=<%=photo_url%>>
-<% else %>
-no key
+    <div class="card-group pagination">
+<%
+      latest_photos.each { |p|
+%>
+      <div class="container card-group mt-3 bg-light" style="width:30%">
+        <a href="<%= p["img_src"] %>" target="_blank">
+          <img class="card-img-top w-25" src="<%= p["img_src"] %>" alt="Card image" style="width:100%">
+        </a>
+        <div class="card-body">
+          <h4 class="card-title"><%= p["rover"]["name"] %></h4>
+          <p class="card-text">
+            <%= p["earth_date"] %>
+            <br>
+            <%= p["camera"]["full_name"] %>
+          </p>
+        </div>
+      </div>
+  <%
+      } # end of latest_photos.each
+  %>
+    </div> <!-- end of card-group -->
+
+ <% else %>
+  no key
 <% end %>

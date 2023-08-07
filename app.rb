@@ -4,6 +4,8 @@ require "sinatra/reloader"
 #require "binding_of_caller"
 require "chartkick"
 require "./services/nasa"
+require "http"
+require "json"
 require "date"
 # Need this configuration for better_errors
 #use(BetterErrors::Middleware)
