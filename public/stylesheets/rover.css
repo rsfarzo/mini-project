@@ -1,3 +1,16 @@
+
+img {
+  max-width: 100%;
+  height: auto; 
+}
+.rover-image {
+    max-width: 100%;
+    width: 300px;
+    height: auto;
+    float: left;
+    margin: 3px;
+    padding: 3px;
+}
 .zoom {
   padding: 5px;
   background-color: rgb(231, 236, 231);
@@ -6,7 +19,6 @@
   height: 200px;
   margin: 0 auto;
 }
-
 .zoom:hover {
   -ms-transform: scale(1.5); /* IE 9 */
   -webkit-transform: scale(1.5); /* Safari 3-8 */
